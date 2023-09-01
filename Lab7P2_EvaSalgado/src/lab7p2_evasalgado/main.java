@@ -13,12 +13,15 @@ import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 public class main extends javax.swing.JFrame {
-
+    
     public main() {
         initComponents();
         vehicle.setVisible(false);
+        client.setVisible(false);
+        sale.setVisible(false);
+        seller.setVisible(false);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,6 +44,12 @@ public class main extends javax.swing.JFrame {
         vh_añadir = new javax.swing.JButton();
         vh_color = new javax.swing.JButton();
         vh_year = new com.toedter.calendar.JDateChooser();
+        seller = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        vd_name = new javax.swing.JTextField();
+        vd_add = new javax.swing.JButton();
+        client = new javax.swing.JPanel();
+        sale = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         eliminar = new javax.swing.JMenuItem();
@@ -53,9 +62,19 @@ public class main extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         add_seller.setText("Añadir Vendedor");
+        add_seller.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_sellerMouseClicked(evt);
+            }
+        });
         jPanel3.add(add_seller, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 181, 287, 90));
 
         add_client.setText("Añadir Cliente");
+        add_client.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_clientMouseClicked(evt);
+            }
+        });
         jPanel3.add(add_client, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 348, 287, 90));
 
         add_vehicle.setText("Añadir Vehiculo");
@@ -122,12 +141,12 @@ public class main extends javax.swing.JFrame {
                     .addComponent(vh_price, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vh_añadir)
                     .addComponent(vh_year, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         vehicleLayout.setVerticalGroup(
             vehicleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(vehicleLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addComponent(vh_marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,7 +154,7 @@ public class main extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(vh_color, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(vh_model, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,6 +173,65 @@ public class main extends javax.swing.JFrame {
 
         jPanel3.add(vehicle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 450, 540));
 
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Ingrese el nombre del vendedor:");
+
+        vd_name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        vd_add.setText("añadir");
+
+        javax.swing.GroupLayout sellerLayout = new javax.swing.GroupLayout(seller);
+        seller.setLayout(sellerLayout);
+        sellerLayout.setHorizontalGroup(
+            sellerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sellerLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addGroup(sellerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(vd_add, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vd_name)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(96, 96, 96))
+        );
+        sellerLayout.setVerticalGroup(
+            sellerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sellerLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vd_name, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addGap(86, 86, 86)
+                .addComponent(vd_add, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addGap(189, 189, 189))
+        );
+
+        jPanel3.add(seller, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 470, 550));
+
+        javax.swing.GroupLayout clientLayout = new javax.swing.GroupLayout(client);
+        client.setLayout(clientLayout);
+        clientLayout.setHorizontalGroup(
+            clientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 430, Short.MAX_VALUE)
+        );
+        clientLayout.setVerticalGroup(
+            clientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(client, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 540));
+
+        javax.swing.GroupLayout saleLayout = new javax.swing.GroupLayout(sale);
+        sale.setLayout(saleLayout);
+        saleLayout.setHorizontalGroup(
+            saleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        saleLayout.setVerticalGroup(
+            saleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(sale, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 540));
 
         jMenu1.setText("Archivos");
@@ -164,7 +242,7 @@ public class main extends javax.swing.JFrame {
         modificar.setText("Modificar ");
         jMenu1.add(modificar);
 
-        listar.setText("Listar");
+        listar.setText("Venta");
         jMenu1.add(listar);
 
         jMenuBar1.add(jMenu1);
@@ -178,6 +256,9 @@ public class main extends javax.swing.JFrame {
         jLabel1.setVisible(false);
         jLabel2.setVisible(false);
         vehicle.setVisible(true);
+        client.setVisible(false);
+        sale.setVisible(false);
+        seller.setVisible(false);
     }//GEN-LAST:event_add_vehicleMouseClicked
 
     private void vh_añadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vh_añadirMouseClicked
@@ -187,29 +268,42 @@ public class main extends javax.swing.JFrame {
         double p = Double.parseDouble(vh_price.getText());
         v = new vehiculo(vh_marca.getText(), vh_color.getBackground(), vh_model.getText(), vh_year.getDate(), p);
         
-        
         try {
             vehiculos = new File("./vehiculos.txt");
-            fw = new FileWriter(vehiculos,true);
+            fw = new FileWriter(vehiculos, true);
             bw = new BufferedWriter(fw);
             bw.write(v.toString());
             JOptionPane.showMessageDialog(this, "Archivos ingresados exitosamente");
-           
             
         } catch (Exception e) {
             e.printStackTrace();
         }
-         vh_marca.setText("");
-            vh_color.setBackground(Color.red);
-            vh_model.setText("");
-            vh_year.setDateFormatString("");
-            vh_price.setText("");
+        vh_marca.setText("");
+        vh_color.setBackground(Color.red);
+        vh_model.setText("");
+        vh_year.setDateFormatString("");
+        vh_price.setText("");
     }//GEN-LAST:event_vh_añadirMouseClicked
 
     private void vh_colorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vh_colorMouseClicked
         vh_color.setBackground(JColorChooser.showDialog(this, "seleccione un color", Color.red));
     }//GEN-LAST:event_vh_colorMouseClicked
 
+    private void add_sellerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_sellerMouseClicked
+        seller.setVisible(true);
+        client.setVisible(false);
+        vehicle.setVisible(false);
+        sale.setVisible(false);
+        
+    }//GEN-LAST:event_add_sellerMouseClicked
+
+    private void add_clientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_clientMouseClicked
+        seller.setVisible(false);
+        client.setVisible(true);
+        vehicle.setVisible(false);
+        sale.setVisible(false);
+    }//GEN-LAST:event_add_clientMouseClicked
+    
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -227,7 +321,7 @@ public class main extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new main().setVisible(true);
@@ -239,6 +333,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton add_client;
     private javax.swing.JButton add_seller;
     private javax.swing.JButton add_vehicle;
+    private javax.swing.JPanel client;
     private javax.swing.JMenuItem eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -246,12 +341,17 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JMenuItem listar;
     private javax.swing.JMenuItem modificar;
+    private javax.swing.JPanel sale;
+    private javax.swing.JPanel seller;
+    private javax.swing.JButton vd_add;
+    private javax.swing.JTextField vd_name;
     private javax.swing.JPanel vehicle;
     private javax.swing.JButton vh_añadir;
     private javax.swing.JButton vh_color;
