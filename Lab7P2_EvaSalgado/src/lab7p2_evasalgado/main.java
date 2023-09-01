@@ -1,20 +1,46 @@
-
 package lab7p2_evasalgado;
 
+import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
 
 public class main extends javax.swing.JFrame {
 
-
     public main() {
         initComponents();
+        vehicle.setVisible(false);
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
+        add_seller = new javax.swing.JButton();
+        add_client = new javax.swing.JButton();
+        add_vehicle = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        vehicle = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        vh_marca = new javax.swing.JTextField();
+        vh_model = new javax.swing.JTextField();
+        vh_price = new javax.swing.JTextField();
+        vh_añadir = new javax.swing.JButton();
+        vh_color = new javax.swing.JButton();
+        vh_year = new com.toedter.calendar.JDateChooser();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         eliminar = new javax.swing.JMenuItem();
@@ -24,18 +50,111 @@ public class main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 682, Short.MAX_VALUE)
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        add_seller.setText("Añadir Vendedor");
+        jPanel3.add(add_seller, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 181, 287, 90));
+
+        add_client.setText("Añadir Cliente");
+        jPanel3.add(add_client, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 348, 287, 90));
+
+        add_vehicle.setText("Añadir Vehiculo");
+        add_vehicle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_vehicleMouseClicked(evt);
+            }
+        });
+        jPanel3.add(add_vehicle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 24, 287, 90));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab7p2_evasalgado/representante.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 120, 151, 151));
+
+        jLabel2.setText("Carros Rayo McQueen");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 83, 137, -1));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Ingrese color de vehículo:");
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Ingrese marca de vehículo:");
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Ingrese modelo de vehículo:");
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Ingrese año de creación de vehículo:");
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Ingrese precio de compra de vehículo:");
+
+        vh_añadir.setText("Añadir");
+        vh_añadir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vh_añadirMouseClicked(evt);
+            }
+        });
+
+        vh_color.setBackground(new java.awt.Color(255, 51, 51));
+        vh_color.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vh_colorMouseClicked(evt);
+            }
+        });
+
+        vh_year.setDateFormatString("yyyy\n");
+
+        javax.swing.GroupLayout vehicleLayout = new javax.swing.GroupLayout(vehicle);
+        vehicle.setLayout(vehicleLayout);
+        vehicleLayout.setHorizontalGroup(
+            vehicleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vehicleLayout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addGroup(vehicleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vh_marca, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vh_color, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vh_model, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(vh_price, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vh_añadir)
+                    .addComponent(vh_year, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
+        vehicleLayout.setVerticalGroup(
+            vehicleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vehicleLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(vh_marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(vh_color, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(vh_model, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(vh_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(vh_price, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(vh_añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(150, 150, 150))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel3.add(vehicle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 450, 540));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 540));
 
         jMenu1.setText("Archivos");
 
@@ -43,11 +162,6 @@ public class main extends javax.swing.JFrame {
         jMenu1.add(eliminar);
 
         modificar.setText("Modificar ");
-        modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarActionPerformed(evt);
-            }
-        });
         jMenu1.add(modificar);
 
         listar.setText("Listar");
@@ -60,11 +174,42 @@ public class main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modificarActionPerformed
+    private void add_vehicleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_vehicleMouseClicked
+        jLabel1.setVisible(false);
+        jLabel2.setVisible(false);
+        vehicle.setVisible(true);
+    }//GEN-LAST:event_add_vehicleMouseClicked
 
- 
+    private void vh_añadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vh_añadirMouseClicked
+        File vehiculos = null;
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        double p = Double.parseDouble(vh_price.getText());
+        v = new vehiculo(vh_marca.getText(), vh_color.getBackground(), vh_model.getText(), vh_year.getDate(), p);
+        
+        
+        try {
+            vehiculos = new File("./vehiculos.txt");
+            fw = new FileWriter(vehiculos,true);
+            bw = new BufferedWriter(fw);
+            bw.write(v.toString());
+            JOptionPane.showMessageDialog(this, "Archivos ingresados exitosamente");
+           
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         vh_marca.setText("");
+            vh_color.setBackground(Color.red);
+            vh_model.setText("");
+            vh_year.setDateFormatString("");
+            vh_price.setText("");
+    }//GEN-LAST:event_vh_añadirMouseClicked
+
+    private void vh_colorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vh_colorMouseClicked
+        vh_color.setBackground(JColorChooser.showDialog(this, "seleccione un color", Color.red));
+    }//GEN-LAST:event_vh_colorMouseClicked
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -82,20 +227,37 @@ public class main extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-     
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new main().setVisible(true);
             }
         });
     }
-
+    vehiculo v = new vehiculo();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add_client;
+    private javax.swing.JButton add_seller;
+    private javax.swing.JButton add_vehicle;
     private javax.swing.JMenuItem eliminar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JMenuItem listar;
     private javax.swing.JMenuItem modificar;
+    private javax.swing.JPanel vehicle;
+    private javax.swing.JButton vh_añadir;
+    private javax.swing.JButton vh_color;
+    private javax.swing.JTextField vh_marca;
+    private javax.swing.JTextField vh_model;
+    private javax.swing.JTextField vh_price;
+    private com.toedter.calendar.JDateChooser vh_year;
     // End of variables declaration//GEN-END:variables
 }

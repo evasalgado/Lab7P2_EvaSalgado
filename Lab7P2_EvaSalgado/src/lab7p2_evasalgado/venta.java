@@ -4,42 +4,42 @@ package lab7p2_evasalgado;
 import java.util.ArrayList;
 
 public class venta {
-    ArrayList<vendedor> Vendedor;
-    ArrayList<cliente> comprador;
-    ArrayList<vehiculo> carrovendido;
+    String Vendedor;
+    String comprador;
+    String carrovendido;
     double costo;
 
     public venta() {
     }
 
-    public venta(ArrayList<vendedor> Vendedor, ArrayList<cliente> comprador, ArrayList<vehiculo> carrovendido, double costo) {
+    public venta(String Vendedor, String comprador, String carrovendido, double costo) {
         this.Vendedor = Vendedor;
         this.comprador = comprador;
         this.carrovendido = carrovendido;
         this.costo = costo;
     }
 
-    public ArrayList<vendedor> getVendedor() {
+    public String getVendedor() {
         return Vendedor;
     }
 
-    public void setVendedor(ArrayList<vendedor> Vendedor) {
+    public void setVendedor(String Vendedor) {
         this.Vendedor = Vendedor;
     }
 
-    public ArrayList<cliente> getComprador() {
+    public String getComprador() {
         return comprador;
     }
 
-    public void setComprador(ArrayList<cliente> comprador) {
+    public void setComprador(String comprador) {
         this.comprador = comprador;
     }
 
-    public ArrayList<vehiculo> getCarrovendido() {
+    public String getCarrovendido() {
         return carrovendido;
     }
 
-    public void setCarrovendido(ArrayList<vehiculo> carrovendido) {
+    public void setCarrovendido(String carrovendido) {
         this.carrovendido = carrovendido;
     }
 
@@ -50,6 +50,13 @@ public class venta {
     public void setCosto(double costo) {
         this.costo = costo;
     }
+
+    @Override
+    public String toString() {
+        return "venta{" + "Vendedor=" + Vendedor + ", comprador=" + comprador + ", carrovendido=" + carrovendido + ", costo=" + costo + '}';
+    }
+
+   
     
     
 }

@@ -64,7 +64,7 @@ public class vehiculo {
 
     @Override
     public String toString() {
-        return "vehiculo{" + "marca=" + marca + ", color=" + color + ", modelo=" + modelo + ", a\u00f1o=" + año + ", precio=" + precio + '}';
+        return   marca + "," + color + "," + modelo + "," + año + "," + precio ;
     }
     
     
