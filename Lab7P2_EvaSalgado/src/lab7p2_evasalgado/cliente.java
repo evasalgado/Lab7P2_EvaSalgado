@@ -33,7 +33,13 @@ public class cliente {
     }
 
     public void setEdad(int edad) {
-        this.edad = edad;
+        try {
+            if (edad>=0) {
+                this.edad = edad;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getProfesion() {
