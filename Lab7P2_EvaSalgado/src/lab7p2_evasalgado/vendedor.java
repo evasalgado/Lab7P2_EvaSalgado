@@ -4,9 +4,9 @@ package lab7p2_evasalgado;
 import java.awt.Color;
 
 public class vendedor {
-    String Nombre;
-    int carrosvendidos;
-    double dinerogenerado;
+    private String Nombre;
+    private int carrosvendidos;
+    private double dinerogenerado;
 
     public vendedor() {
     }

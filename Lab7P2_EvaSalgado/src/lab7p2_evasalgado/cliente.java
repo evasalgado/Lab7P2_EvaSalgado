@@ -1,13 +1,12 @@
-
 package lab7p2_evasalgado;
 
-
 public class cliente {
-    String nombre;
-    int edad;
-    String profesion;
-    int carroscomprados;
-    double sueldodisponible;
+
+    private String nombre;
+    private int edad;
+    private String profesion;
+    private int carroscomprados;
+    private double sueldodisponible;
 
     public cliente() {
     }
@@ -34,7 +33,7 @@ public class cliente {
 
     public void setEdad(int edad) {
         try {
-            if (edad>=0) {
+            if (edad >= 0) {
                 this.edad = edad;
             }
         } catch (Exception e) {
@@ -68,8 +67,7 @@ public class cliente {
 
     @Override
     public String toString() {
-        return "cliente{" + "nombre=" + nombre + ", edad=" + edad + ", profesion=" + profesion + ", carroscomprados=" + carroscomprados + ", sueldodisponible=" + sueldodisponible + '}';
+        return  nombre + "," + edad + "," + profesion + "," + carroscomprados + "," + sueldodisponible;
     }
-    
-    
+
 }

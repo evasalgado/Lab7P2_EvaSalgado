@@ -1,13 +1,13 @@
-
 package lab7p2_evasalgado;
 
 import java.util.ArrayList;
 
 public class venta {
-    String Vendedor;
-    String comprador;
-    String carrovendido;
-    double costo;
+
+    private String Vendedor;
+    private String comprador;
+    private String carrovendido;
+    private double costo;
 
     public venta() {
     }
@@ -56,7 +56,4 @@ public class venta {
         return "venta{" + "Vendedor=" + Vendedor + ", comprador=" + comprador + ", carrovendido=" + carrovendido + ", costo=" + costo + '}';
     }
 
-   
-    
-    
 }
