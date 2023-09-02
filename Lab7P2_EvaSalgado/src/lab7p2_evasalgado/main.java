@@ -17,11 +17,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 public class main extends javax.swing.JFrame {
 
-    public main() {
+    public main() throws ParseException {
         initComponents();
+
+        listaventa.setVisible(false);
+
         vehicle.setVisible(false);
         client.setVisible(false);
         sale.setVisible(false);
@@ -75,9 +80,21 @@ public class main extends javax.swing.JFrame {
         sv_vender = new javax.swing.JButton();
         sv_buyer = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaventa = new javax.swing.JTree();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        modificar = new javax.swing.JMenuItem();
+        eliminar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         añadir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -369,20 +386,47 @@ public class main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Venta ", sale);
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Vendedores");
+        listaventa.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(listaventa);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(426, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 617, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("listar", jPanel1);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jMenu1.setText("Menu");
+
+        modificar.setText("Modificar");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(modificar);
+
+        eliminar.setText("Eliminar");
+        jMenu1.add(eliminar);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -534,7 +578,42 @@ public class main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_sv_venderMouseClicked
 
-    public static void main(String args[]) {
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+
+
+    }//GEN-LAST:event_modificarActionPerformed
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        listaventa.setVisible(true);
+        if (listaventa.contains(null)) {
+            System.out.println("Por ahora no hay nada");
+        } else {
+            DateFormat df = new SimpleDateFormat("yyyy");
+            double price = Double.parseDouble(vh_price.getText());
+            DefaultTreeModel arbol = (DefaultTreeModel) listaventa.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) arbol.getRoot();
+            DefaultMutableTreeNode seller;
+            seller = new DefaultMutableTreeNode(Vendedores);
+//            new vendedor(vd_name.getText(), contVend, totventa)
+            DefaultMutableTreeNode buyer;
+            buyer = new DefaultMutableTreeNode(Clientes);
+//            new cliente(cl_name.getText(),
+//                    (int) cl_age.getValue(), cl_profesion.getText(), contClient,
+//                    Double.parseDouble(cl_money.getText()))
+            DefaultMutableTreeNode vehicle = null;
+            vehicle = new DefaultMutableTreeNode(Vehiculos);
+//                new vehiculo(vh_marca.getText(), vh_color.getBackground(),
+//                        vh_model.getText(), df.parse(vh_year.getText()), price)
+
+            buyer.add(vehicle);
+            seller.add(buyer);
+            raiz.add(seller);
+            arbol.reload();
+        }
+
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    public static void main(String args[]) throws ParseException {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -554,7 +633,11 @@ public class main extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new main().setVisible(true);
+                try {
+                    new main().setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -579,6 +662,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField cl_name;
     private javax.swing.JTextField cl_profesion;
     private javax.swing.JPanel client;
+    private javax.swing.JMenuItem eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -594,8 +678,13 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTree listaventa;
+    private javax.swing.JMenuItem modificar;
     private javax.swing.JPanel sale;
     private javax.swing.JPanel seller;
     private javax.swing.JTextField sv_buyer;
