@@ -43,7 +43,7 @@ public class vendedor {
 
     @Override
     public String toString() {
-        return "vendedor{" + "Nombre=" + Nombre + ", carrosvendidos=" + carrosvendidos + ", dinerogenerado=" + dinerogenerado + '}';
+        return  Nombre + "," + carrosvendidos + ", " + dinerogenerado ;
     }
     
     

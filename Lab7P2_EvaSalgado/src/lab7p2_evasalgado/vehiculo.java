@@ -5,9 +5,9 @@ import java.awt.Color;
 import java.util.Date;
 
 public class vehiculo {
-    String marca;
-    Color color;
-    String modelo;
+    private String marca;
+    private Color color;
+    private String modelo;
     Date año;
     Double precio;
 

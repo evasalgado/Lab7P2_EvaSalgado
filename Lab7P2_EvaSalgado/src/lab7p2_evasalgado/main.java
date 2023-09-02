@@ -8,11 +8,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
@@ -32,7 +34,7 @@ public class main extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
+        añadir = new javax.swing.JPanel();
         add_seller = new javax.swing.JButton();
         add_client = new javax.swing.JButton();
         add_vehicle = new javax.swing.JButton();
@@ -49,7 +51,7 @@ public class main extends javax.swing.JFrame {
         vh_price = new javax.swing.JTextField();
         vh_añadir = new javax.swing.JButton();
         vh_color = new javax.swing.JButton();
-        vh_year = new com.toedter.calendar.JDateChooser();
+        vh_year = new javax.swing.JTextField();
         seller = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         vd_name = new javax.swing.JTextField();
@@ -72,11 +74,12 @@ public class main extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         sv_vender = new javax.swing.JButton();
         sv_buyer = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        añadir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         add_seller.setText("Añadir Vendedor");
         add_seller.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -84,7 +87,7 @@ public class main extends javax.swing.JFrame {
                 add_sellerMouseClicked(evt);
             }
         });
-        jPanel3.add(add_seller, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 181, 287, 90));
+        añadir.add(add_seller, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 181, 287, 90));
 
         add_client.setText("Añadir Cliente");
         add_client.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,7 +95,7 @@ public class main extends javax.swing.JFrame {
                 add_clientMouseClicked(evt);
             }
         });
-        jPanel3.add(add_client, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 348, 287, 90));
+        añadir.add(add_client, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 348, 287, 90));
 
         add_vehicle.setText("Añadir Vehiculo");
         add_vehicle.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,14 +103,14 @@ public class main extends javax.swing.JFrame {
                 add_vehicleMouseClicked(evt);
             }
         });
-        jPanel3.add(add_vehicle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 24, 287, 90));
+        añadir.add(add_vehicle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 24, 287, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab7p2_evasalgado/representante.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 120, 151, 151));
+        añadir.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 120, 151, 151));
 
         jLabel2.setText("Carros Rayo McQueen");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 83, 137, -1));
+        añadir.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 83, 137, -1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Ingrese color de vehículo:");
@@ -138,8 +141,6 @@ public class main extends javax.swing.JFrame {
             }
         });
 
-        vh_year.setDateFormatString("yyyy\n");
-
         javax.swing.GroupLayout vehicleLayout = new javax.swing.GroupLayout(vehicle);
         vehicle.setLayout(vehicleLayout);
         vehicleLayout.setHorizontalGroup(
@@ -157,7 +158,7 @@ public class main extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(vh_price, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vh_añadir)
-                    .addComponent(vh_year, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vh_year, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(107, Short.MAX_VALUE))
         );
         vehicleLayout.setVerticalGroup(
@@ -177,9 +178,9 @@ public class main extends javax.swing.JFrame {
                 .addComponent(vh_model, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(vh_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vh_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addComponent(vh_price, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,7 +189,7 @@ public class main extends javax.swing.JFrame {
                 .addGap(150, 150, 150))
         );
 
-        jPanel3.add(vehicle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 450, 540));
+        añadir.add(vehicle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 450, 540));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Ingrese el nombre del vendedor:");
@@ -226,7 +227,7 @@ public class main extends javax.swing.JFrame {
                 .addGap(189, 189, 189))
         );
 
-        jPanel3.add(seller, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 470, 550));
+        añadir.add(seller, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 470, 550));
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Ingrese edad de cliente: ");
@@ -292,9 +293,9 @@ public class main extends javax.swing.JFrame {
                 .addContainerGap(74, Short.MAX_VALUE))
         );
 
-        jPanel3.add(client, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 470, 550));
+        añadir.add(client, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 470, 550));
 
-        jTabbedPane1.addTab("Añadir", jPanel3);
+        jTabbedPane1.addTab("Añadir", añadir);
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Ingrese nombre de Comprador:");
@@ -346,14 +347,10 @@ public class main extends javax.swing.JFrame {
         saleLayout.setVerticalGroup(
             saleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(saleLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(saleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addGroup(saleLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(saleLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(61, 61, 61)
+                .addGroup(saleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
                 .addComponent(sv_seller, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -371,6 +368,19 @@ public class main extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Venta ", sale);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 850, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 617, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("listar", jPanel1);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -391,18 +401,33 @@ public class main extends javax.swing.JFrame {
         FileWriter fw = null;
         BufferedWriter bw = null;
         double p = Double.parseDouble(vh_price.getText());
-        v = new vehiculo(vh_marca.getText(), vh_color.getBackground(), vh_model.getText(), vh_year.getDate(), p);
+        Date date = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy");
+
         try {
-            vehiculos = new File("./vehiculos.txt");
+            vehiculos = new File("./vehiculos.txt/");
             fw = new FileWriter(vehiculos, true);
             bw = new BufferedWriter(fw);
+            try {
+                date = df.parse(vh_year.getText());
+            } catch (ParseException ex) {
+                Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            v = new vehiculo(vh_marca.getText(), vh_color.getBackground(), vh_model.getText(), date, p);
+
+            System.out.println(v.toString());
             bw.write(v.toString());
 
             JOptionPane.showMessageDialog(this, "Archivos ingresados exitosamente");
+            Vehiculos.add(v);
 
+            bw.close();
+            fw.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         vh_marca.setText("");
         vh_color.setBackground(Color.red);
         vh_model.setText("");
@@ -436,11 +461,12 @@ public class main extends javax.swing.JFrame {
         File vendedores = null;
         FileWriter fw = null;
         BufferedWriter bw = null;
-        s = new vendedor(vd_name.getText(), 0, 0);
+
         try {
             vendedores = new File("./vendedores.txt");
             fw = new FileWriter(vendedores, true);
             bw = new BufferedWriter(fw);
+            s = new vendedor(vd_name.getText(), 0, 0);
             bw.write(s.toString());
             Vendedores.add(s);
             JOptionPane.showMessageDialog(this, "vendedor ingresado exitosamente");
@@ -456,14 +482,15 @@ public class main extends javax.swing.JFrame {
         File clientes = null;
         FileWriter fw = null;
         BufferedWriter bw = null;
-        double money = Double.parseDouble(cl_money.getText());
-        c = new cliente(cl_name.getText(), (int) cl_age.getValue(), cl_profesion.getText(), 0, money);
+
         try {
             clientes = new File("./clientes.txt");
-
+            double money = Double.parseDouble(cl_money.getText());
+            c = new cliente(cl_name.getText(), (int) cl_age.getValue(), cl_profesion.getText(), 0, money);
             fw = new FileWriter(clientes, true);
             bw = new BufferedWriter(fw);
             bw.write(c.toString());
+            bw.newLine();
             JOptionPane.showMessageDialog(this, "cliente ingresado exitosamente");
             Clientes.add(c);
 
@@ -477,11 +504,34 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_cl_añadirMouseClicked
 
     private void sv_venderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sv_venderMouseClicked
-        File vehiculos = new File("./vehiculos.txt");
-        File vendedores = new File("./vendedores.txt");
-        FileReader fr = null;
+        double costoV = 0;
 
-        
+        for (int i = 0; i < Vendedores.size() && i < Clientes.size() && i < Vehiculos.size(); i++) {
+            if (Vendedores.get(i).getNombre().equals(sv_seller.getText())
+                    && Clientes.get(i).getNombre().equals(sv_buyer.getText())
+                    && Vehiculos.get(i).getMarca().equals(sv_vehicle.getText())) {
+                if (Clientes.get(i).getSueldodisponible() <= Vehiculos.get(i).getPrecio()) {
+                    costoV = Clientes.get(i).getSueldodisponible() - Vehiculos.get(i).getPrecio();
+                    totventa += Vehiculos.get(i).getPrecio();
+                    restsalario -= Vehiculos.get(i).getPrecio();
+                    contVend++;
+                    contClient++;
+                    Vendedores.get(i).setCarrosvendidos(contVend);
+                    Vendedores.get(i).setDinerogenerado(totventa);
+                    Clientes.get(i).setSueldodisponible(restsalario);
+                    Clientes.get(i).setCarroscomprados(contClient);
+
+                    vh = new venta(sv_seller.getText(), sv_buyer.getText(), sv_vehicle.getText(), costoV);
+                    JOptionPane.showMessageDialog(this, "Compra hecha correctamente");
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Salario Ingresado no es suficiente");
+                }
+                Ventas.add(vh);
+            }
+        }
+
+
     }//GEN-LAST:event_sv_venderMouseClicked
 
     public static void main(String args[]) {
@@ -512,14 +562,17 @@ public class main extends javax.swing.JFrame {
     vendedor s = new vendedor();
     cliente c = new cliente();
     venta vh = new venta();//vh=venta hecha
-    ArrayList<venta> sd = new ArrayList<>(); //
+    ArrayList<venta> Ventas = new ArrayList<>(); //
     ArrayList<vehiculo> Vehiculos = new ArrayList<>();
     ArrayList<vendedor> Vendedores = new ArrayList<>();
     ArrayList<cliente> Clientes = new ArrayList<>();
+    int contVend = 0, contClient = 0;
+    double totventa = 0, restsalario = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_client;
     private javax.swing.JButton add_seller;
     private javax.swing.JButton add_vehicle;
+    private javax.swing.JPanel añadir;
     private javax.swing.JSpinner cl_age;
     private javax.swing.JButton cl_añadir;
     private javax.swing.JTextField cl_money;
@@ -541,7 +594,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel sale;
     private javax.swing.JPanel seller;
@@ -557,6 +610,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField vh_marca;
     private javax.swing.JTextField vh_model;
     private javax.swing.JTextField vh_price;
-    private com.toedter.calendar.JDateChooser vh_year;
+    private javax.swing.JTextField vh_year;
     // End of variables declaration//GEN-END:variables
 }

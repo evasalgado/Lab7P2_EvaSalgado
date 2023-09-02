@@ -34,7 +34,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="a&#xf1;adir">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="A&#xf1;adir">
@@ -132,7 +132,7 @@
                               <Component id="jLabel8" alignment="2" min="-2" max="-2" attributes="0"/>
                               <Component id="vh_price" alignment="2" min="-2" pref="145" max="-2" attributes="0"/>
                               <Component id="vh_añadir" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="vh_year" alignment="2" min="-2" pref="157" max="-2" attributes="0"/>
+                              <Component id="vh_year" alignment="2" min="-2" pref="145" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="107" max="32767" attributes="0"/>
                       </Group>
@@ -155,9 +155,9 @@
                           <Component id="vh_model" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" pref="16" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="vh_year" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="vh_year" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" pref="20" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Component id="vh_price" min="-2" pref="22" max="-2" attributes="0"/>
@@ -223,10 +223,7 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="vh_colorMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="vh_year">
-                  <Properties>
-                    <Property name="dateFormatString" type="java.lang.String" value="yyyy&#xa;"/>
-                  </Properties>
+                <Component class="javax.swing.JTextField" name="vh_year">
                 </Component>
               </SubComponents>
             </Container>
@@ -445,16 +442,10 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Group type="102" alignment="3" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="jLabel9" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="3" attributes="0">
-                              <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
-                              <Component id="jLabel14" max="32767" attributes="0"/>
-                          </Group>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="sv_seller" min="-2" pref="89" max="-2" attributes="0"/>
@@ -510,6 +501,28 @@
             <Component class="javax.swing.JTextField" name="sv_buyer">
             </Component>
           </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="listar">
+                <Property name="tabTitle" type="java.lang.String" value="listar"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="850" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="617" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
         </Container>
       </SubComponents>
     </Container>
